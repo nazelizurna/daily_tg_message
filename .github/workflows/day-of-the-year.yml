@@ -2,8 +2,8 @@ name: Daily Telegram message
 
 on:
   schedule:
-    # Every day at 00:05 UTC (cron is always UTC). Change as needed.
-    - cron: "5 0 * * *"
+    # Every day at 09:00 UTC +3.
+    - cron: "0 6 * * *"
   workflow_dispatch: {}   # lets you run it manually from the Actions tab
 
 jobs:
