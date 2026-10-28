@@ -1,0 +1,27 @@
+name: Daily Telegram message
+
+on:
+  schedule:
+    # Every day at 00:05 UTC (cron is always UTC). Change as needed.
+    - cron: "5 0 * * *"
+  workflow_dispatch: {}   # lets you run it manually from the Actions tab
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Send daily message
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: python daily_message.py
