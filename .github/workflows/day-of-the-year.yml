@@ -2,9 +2,8 @@ name: Daily Telegram message
 
 on:
   schedule:
-    - cron: "0 3 * * *"
-  workflow_dispatch: {}   # lets you run it manually from the Actions tab
-
+    - cron: "0 1 * * *"
+  workflow_dispatch: {}  
 jobs:
   send:
     runs-on: ubuntu-latest
